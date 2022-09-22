@@ -18,9 +18,9 @@ import java.util.Map;
 @RequestMapping("/api/recipe")
 public class RecipeController {
 
-    @Autowired
     private final RecipeService recipeService;
 
+    @Autowired
     public RecipeController(RecipeService recipeService) {this.recipeService = recipeService;}
 
 

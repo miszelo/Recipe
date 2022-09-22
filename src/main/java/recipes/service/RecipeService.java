@@ -14,11 +14,10 @@ import java.util.Optional;
 @Service
 public class RecipeService {
 
-    @Autowired
     private final RecipeRepository recipeRepository;
 
-
-    public RecipeService(@Autowired RecipeRepository recipeRepository) {
+    @Autowired
+    public RecipeService(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
 

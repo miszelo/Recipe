@@ -12,10 +12,6 @@ public class RecipeRepository {
 
     public Map<Integer, Recipe> recipes = new HashMap<>();
 
-    public RecipeRepository() {
-
-    }
-
     public int addRecipe(Recipe recipe) {
         int id = recipes.size() + 1;
         recipes.put(id, recipe);
