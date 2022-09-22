@@ -1,12 +1,12 @@
-package logic.service;
+package recipes.service;
 
-import model.recipe.Recipe;
+import recipes.model.Recipe;
+import recipes.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import repository.RecipeRepository;
 
 import java.util.Map;
 import java.util.Optional;
@@ -14,10 +14,11 @@ import java.util.Optional;
 @Service
 public class RecipeService {
 
+    @Autowired
     private final RecipeRepository recipeRepository;
 
-    @Autowired
-    public RecipeService(RecipeRepository recipeRepository) {
+
+    public RecipeService(@Autowired RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
     }
 

@@ -1,6 +1,6 @@
-package repository;
+package recipes.repository;
 
-import model.recipe.Recipe;
+import recipes.model.Recipe;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
@@ -11,6 +11,10 @@ import java.util.Optional;
 public class RecipeRepository {
 
     public Map<Integer, Recipe> recipes = new HashMap<>();
+
+    public RecipeRepository() {
+
+    }
 
     public int addRecipe(Recipe recipe) {
         int id = recipes.size() + 1;

@@ -1,4 +1,4 @@
-package logic.controler;
+package recipes.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import model.recipe.Recipe;
-import logic.service.RecipeService;
+import recipes.model.Recipe;
+import recipes.service.RecipeService;
 
 import java.util.Map;
 
@@ -17,12 +17,11 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/recipe")
 public class RecipeController {
-    
-    private final RecipeService recipeService;
 
     @Autowired
-    public RecipeController(RecipeService recipeService) {
-        this.recipeService = recipeService;}
+    private final RecipeService recipeService;
+
+    public RecipeController(RecipeService recipeService) {this.recipeService = recipeService;}
 
 
     @GetMapping("/{id}")

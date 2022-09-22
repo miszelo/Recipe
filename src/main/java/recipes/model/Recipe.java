@@ -1,4 +1,4 @@
-package model.recipe;
+package recipes.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
