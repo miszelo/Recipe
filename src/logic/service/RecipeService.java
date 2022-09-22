@@ -1,6 +1,6 @@
 package logic.service;
 
-import model.recipy.Recipe;
+import model.recipe.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

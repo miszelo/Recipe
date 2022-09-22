@@ -1,6 +1,6 @@
 package repository;
 
-import model.recipy.Recipe;
+import model.recipe.Recipe;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;

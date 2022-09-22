@@ -1,4 +1,4 @@
-package model.recipy;
+package model.recipe;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
