@@ -1,11 +1,15 @@
 package recipes.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import recipes.exceptions.RecipeNotFoundException;
 import recipes.model.Recipe;
 import recipes.repository.RecipeRepository;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -15,12 +19,34 @@ public class RecipeService {
     @Autowired
     RecipeRepository recipeRepository;
 
-    public Optional<Recipe> getRecipe(long id) {
-        return Optional.ofNullable(recipeRepository.findById(id).orElseThrow(RecipeNotFoundException::new));
-    }
-
     public Map<String, Long> addRecipe(Recipe recipe) {
         return Map.of("id", recipeRepository.save(recipe).getId());
+    }
+
+    public Optional<Recipe> getRecipe(long id) {
+        return Optional.ofNullable(recipeRepository.findById(id)
+                .orElseThrow(RecipeNotFoundException::new));
+    }
+
+    public List<Recipe> findByCategoryIgnoreCaseOrderByDateDesc(String category) {
+        return recipeRepository.findByCategoryIgnoreCaseOrderByDateDesc(category);
+    }
+
+    public List<Recipe> findByNameIgnoreCaseContainsOrderByDateDesc(String name) {
+        return recipeRepository.findByNameIgnoreCaseContainsOrderByDateDesc(name);
+    }
+
+    public void updateRecipe(Recipe recipe, long id) {
+        Recipe recipeToUpdate = recipeRepository.findById(id)
+                .orElseThrow(RecipeNotFoundException::new);
+
+        recipeToUpdate.setName(recipe.getName());
+        recipeToUpdate.setCategory(recipe.getCategory());
+        recipeToUpdate.setDescription(recipe.getDescription());
+        recipeToUpdate.setIngredients(recipe.getIngredients());
+        recipeToUpdate.setDirections(recipe.getDirections());
+
+        recipeRepository.save(recipeToUpdate);
     }
 
     public void deleteRecipe(long id) {
@@ -29,4 +55,5 @@ public class RecipeService {
         }
         recipeRepository.deleteById(id);
     }
+
 }

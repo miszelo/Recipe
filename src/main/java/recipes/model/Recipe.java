@@ -3,6 +3,7 @@ package recipes.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -11,9 +12,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -37,13 +40,23 @@ public class Recipe {
     @Column(name = "DESCRIPTION")
     private String description;
 
+    @NotBlank
+    @Column(name = "CATEGORY")
+    private String category;
+
+    @UpdateTimestamp
+    private LocalDateTime date;
+
     @NotEmpty
     @ElementCollection
-    @CollectionTable(name = "INGREDIENTS")
+    @CollectionTable(name = "INGREDIENTS", joinColumns = @JoinColumn(name="id"))
     private List<String> ingredients;
 
     @NotEmpty
     @ElementCollection
-    @CollectionTable(name = "DIRECTIONS")
+    @CollectionTable(name = "DIRECTIONS", joinColumns = @JoinColumn(name="id"))
     private List<String> directions;
+
 }
+
+
