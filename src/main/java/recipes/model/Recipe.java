@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -57,6 +58,7 @@ public class Recipe {
     @CollectionTable(name = "DIRECTIONS", joinColumns = @JoinColumn(name="id"))
     private List<String> directions;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
-
-
