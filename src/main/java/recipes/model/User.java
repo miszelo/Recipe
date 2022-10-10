@@ -7,9 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Data
@@ -18,14 +18,13 @@ import java.util.Set;
 public class User {
 
     @Id
-    @Email(regexp = "regexp = \"^(?=.{1,64}@)[A-Za-z0-9\\\\+_-]+(\\\\.[A-Za-z0-9\\\\+_-]+)*@\"\n"
-            + "+ \"[^-][A-Za-z0-9\\\\+-]+(\\\\.[A-Za-z0-9\\\\+-]+)*(\\\\.[A-Za-z]{2,})$\"")
+    @Pattern(regexp = ".+@.+\\..+")
     @NotBlank
     @Column(name = "EMAIL")
     private String email;
 
     @NotBlank
-    @Min(value = 8)
+    @Size(min = 8)
     @Column(name = "PASSWORD")
     private String password;
 

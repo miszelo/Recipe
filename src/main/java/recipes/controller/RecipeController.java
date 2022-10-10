@@ -2,6 +2,8 @@ package recipes.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +33,9 @@ public class RecipeController {
     RecipeService recipeService;
 
     @PostMapping("/new")
-    public Map<String,Long> postRecipe(@Valid @RequestBody Recipe recipe) {
-        return recipeService.addRecipe(recipe);
+    public Map<String,Long> postRecipe(@Valid @RequestBody Recipe recipe,
+                                       @AuthenticationPrincipal UserDetails userDetails) {
+        return recipeService.addRecipe(recipe, userDetails);
     }
 
     @GetMapping("/{id}")
@@ -52,14 +55,17 @@ public class RecipeController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateRecipe(@Valid @RequestBody Recipe recipe, @PathVariable long id) {
-        recipeService.updateRecipe(recipe, id);
+    public void updateRecipe(@Valid @RequestBody Recipe recipe,
+                             @PathVariable long id,
+                             @AuthenticationPrincipal UserDetails userDetails) {
+        recipeService.updateRecipe(recipe, id, userDetails);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteRecipe(@PathVariable long id) {
-        recipeService.deleteRecipe(id);
+    public void deleteRecipe(@PathVariable long id,
+                             @AuthenticationPrincipal UserDetails userDetails) {
+        recipeService.deleteRecipe(id, userDetails);
     }
 }
 
