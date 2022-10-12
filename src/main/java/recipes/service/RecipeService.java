@@ -66,7 +66,6 @@ public class RecipeService {
         recipeToUpdate.setDate(LocalDateTime.now());
         recipeToUpdate.setIngredients(recipe.getIngredients());
         recipeToUpdate.setDirections(recipe.getDirections());
-
         recipeRepository.save(recipeToUpdate);
 
         return ResponseEntity.noContent().build();
