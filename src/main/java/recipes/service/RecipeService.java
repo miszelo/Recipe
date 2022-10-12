@@ -1,16 +1,14 @@
 package recipes.service;
 
-import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 import recipes.exceptions.RecipeNotFoundException;
 import recipes.model.Recipe;
 import recipes.model.User;
 import recipes.repository.RecipeRepository;
-import recipes.security.auth.ApplicationUserService;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,34 +21,33 @@ public class RecipeService {
     @Autowired
     RecipeRepository recipeRepository;
 
-    @Autowired
-    ApplicationUserService applicationUserService;
-
-    public Map<String, Long> addRecipe(Recipe recipe,
-                                       UserDetails userDetails) {
+    public ResponseEntity<Map<String, Long>> addRecipe(Recipe recipe,
+                                                       UserDetails userDetails) {
         User user = new User();
         user.setEmail(userDetails.getUsername());
         user.setPassword(userDetails.getPassword());
 
         recipe.setUser(user);
 
-        return Map.of("id", recipeRepository.save(recipe).getId());
+        recipeRepository.save(recipe);
+
+        return ResponseEntity.ok(Map.of("id",recipe.getId()));
     }
 
-    public Optional<Recipe> getRecipe(long id) {
-        return Optional.ofNullable(recipeRepository.findById(id)
-                .orElseThrow(RecipeNotFoundException::new));
+    public ResponseEntity<Recipe> getRecipe(long id) {
+        return ResponseEntity.of(Optional.ofNullable(recipeRepository.findById(id)
+                .orElseThrow(RecipeNotFoundException::new)));
     }
 
-    public List<Recipe> findByCategoryIgnoreCaseOrderByDateDesc(String category) {
-        return recipeRepository.findByCategoryIgnoreCaseOrderByDateDesc(category);
+    public ResponseEntity<List<Recipe>> findByCategoryIgnoreCaseOrderByDateDesc(String category) {
+        return ResponseEntity.ok(recipeRepository.findByCategoryIgnoreCaseOrderByDateDesc(category));
     }
 
-    public List<Recipe> findByNameIgnoreCaseContainsOrderByDateDesc(String name) {
-        return recipeRepository.findByNameIgnoreCaseContainsOrderByDateDesc(name);
+    public ResponseEntity<List<Recipe>> findByNameIgnoreCaseContainsOrderByDateDesc(String name) {
+        return ResponseEntity.ok(recipeRepository.findByNameIgnoreCaseContainsOrderByDateDesc(name));
     }
 
-    public void updateRecipe(Recipe recipe, long id,
+    public ResponseEntity<?> updateRecipe(Recipe recipe, long id,
                              UserDetails userDetails) {
         User user = new User();
         user.setEmail(userDetails.getUsername());
@@ -60,7 +57,7 @@ public class RecipeService {
                 .orElseThrow(RecipeNotFoundException::new);
 
         if (!recipeToUpdate.getUser().getEmail().equals(user.getEmail())) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
 
         recipeToUpdate.setName(recipe.getName());
@@ -71,9 +68,11 @@ public class RecipeService {
         recipeToUpdate.setDirections(recipe.getDirections());
 
         recipeRepository.save(recipeToUpdate);
+
+        return ResponseEntity.noContent().build();
     }
 
-    public void deleteRecipe(long id,
+    public ResponseEntity<?> deleteRecipe(long id,
                              UserDetails userDetails) {
 
         User user = new User();
@@ -84,11 +83,10 @@ public class RecipeService {
                 .orElseThrow(RecipeNotFoundException::new);
 
         if (!recipeToDelete.getUser().getEmail().equals(user.getEmail())) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
 
         recipeRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
-
-
 }
