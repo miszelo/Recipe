@@ -8,7 +8,7 @@
 #### [About](#about)
 #### [Technologies and frameworks](#technologies-and-frameworks)
 #### [Usage](#usage)
-#### [Learning outcomes](#Learning-outcomes)
+#### [Learning outcomes](#Learning-outcomes-1)
 
 # About
 Spring Boot application with REST API 
