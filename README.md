@@ -1,3 +1,12 @@
+
+# Recipes
+
+[Recipes](https://hyperskill.org/projects/180) - challenging project from [HyperSkill](https://hyperskill.org/tracks/12)
+
+# About
+Spring Boot application with REST API 
+created for posting recipes.
+
 # Usage
 
 Avaible without authorization:
