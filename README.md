@@ -3,7 +3,7 @@
 
 [Recipes](https://hyperskill.org/projects/180) - challenging project from [HyperSkill](https://hyperskill.org/tracks/12)
 
-# Table of contents
+# Table of content
 
 #### [About](#about)
 #### [Technologies and frameworks](#technologies-and-frameworks)
@@ -27,9 +27,6 @@ created for manage recipes by multiple users.
 - REST API
 
 - Project Lombok
-
-
-
 
 
 # Usage
@@ -130,6 +127,9 @@ sample response:
     }
 ]
 ```
+
+
+
 # Learning outcomes
 
 Learned a lot about Spring Boot, Spring Security, JPA, Lombok and Gradle
