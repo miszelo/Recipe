@@ -12,7 +12,7 @@
 
 # About
 Spring Boot application with REST API 
-created for manage recipes by multiple users.
+created for recipe management by multiple users.
 
 
 # Technologies and frameworks
