@@ -81,7 +81,7 @@ response:
 without response
 
 
-### ```GET``` [http://localhost:8881/api/recipe/search?category={category}](localhost:8881/api/recipe/search?category=beverage) to search for recipes by category
+### ```GET``` [http://localhost:8881/api/recipe/search?category={category}](localhost:8881/api/recipe/search?category=beverage) to search 
 
 and
 
