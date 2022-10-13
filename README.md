@@ -3,12 +3,12 @@
 
 [Recipes](https://hyperskill.org/projects/180) - challenging project from [HyperSkill](https://hyperskill.org/tracks/12)
 
-# Table of content
+# Table of contents
 
 #### [About](#about)
-#### [Technologies](#technologies#and#frameworks)
+#### [Technologies and frameworks](#technologies)
 #### [Usage](#usage)
-#### [Learning outcomes](#Learning#outcomes)
+#### [Learning outcomes](#Learning)
 
 # About
 Spring Boot application with REST API 
