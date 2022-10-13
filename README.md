@@ -6,9 +6,9 @@
 # Table of contents
 
 #### [About](#about)
-#### [Technologies and frameworks](#technologies)
+#### [Technologies and frameworks](#technologies-and-frameworks)
 #### [Usage](#usage)
-#### [Learning outcomes](#Learning)
+#### [Learning outcomes](#Learning-outcomes)
 
 # About
 Spring Boot application with REST API 
