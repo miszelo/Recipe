@@ -5,11 +5,11 @@
 
 # About
 Spring Boot application with REST API 
-created for posting recipes.
+created for manage recipes by multiple users.
 
 # Usage
 
-Avaible without authorization:
+#### Endpoints available without authorization:
 
 ### ```POST```: [http://localhost:8881/api/register/](http://localhost:8881/api/register/)
 ```json
@@ -19,7 +19,7 @@ Avaible without authorization:
 }
 ```
 
-Available only to logged-in users: 
+#### Endpoints available only to logged-in users: 
 ```json
 authorization:
 {
