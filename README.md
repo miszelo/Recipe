@@ -66,7 +66,7 @@ response:
     ]
 }
 ```
-### ```PUT```: [http://localhost:8881/api/recipe/{id}](http://localhost:8881/api/recipe/1) to update the recipe
+### ```PUT``` [http://localhost:8881/api/recipe/{id}](http://localhost:8881/api/recipe/1) to update the recipe
 ```json
 {
     "name": "Warming Ginger Tea",
@@ -79,13 +79,9 @@ response:
 ### ```DELETE``` [http://localhost:8881/api/recipe/{id}](http://localhost:8881/api/recipe/1) to delete a recipe
 
 without response
-
-
-### ```GET``` [http://localhost:8881/api/recipe/search?category={category}](localhost:8881/api/recipe/search?category=beverage) to search 
-
-and
-
-### ```GET``` [http://localhost:8881/api/recipe/search?name={name}](localhost:8881/api/recipe/search?name=FreshMintTea) to search for recipes by name
+### ```GET``` [http://localhost:8881/api/recipe/search/?category={category}](http://localhost:8881/api/recipe/search?category=beverage) to search for recipes by category
+#### AND
+### ```GET``` [http://localhost:8881/api/recipe/search/?name={name}](http://localhost:8881/api/recipe/search?name=FreshMintTea) to search for recipes by name
 sample response:
 ```json
 [
