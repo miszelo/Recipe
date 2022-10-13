@@ -6,16 +6,16 @@
 # Table of content
 
 #### [About](#about)
-#### [Technologies](#technologies)
+#### [Technologies](#technologies#and#frameworks)
 #### [Usage](#usage)
-#### [Learning outcomes](#Learning)
+#### [Learning outcomes](#Learning#outcomes)
 
 # About
 Spring Boot application with REST API 
 created for manage recipes by multiple users.
 
 
-# Technologies
+# Technologies and frameworks
 - Spring Boot
 
 - Spring Security
